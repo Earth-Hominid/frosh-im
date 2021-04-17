@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, redirect, render_template, request
 
 app = Flask(__name__)
 
@@ -30,4 +30,8 @@ def register():
     
     REGISTRANTS[name] = sport
 
+    return redirect("/registrants")
+
+@app.route("/registrants")
+def registrants():
     return render_template("registrants.html", registrants=REGISTRANTS)
